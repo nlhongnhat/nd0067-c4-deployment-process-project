@@ -42,6 +42,10 @@ This application is a fairly simple application that includes all the major comp
 
 ![Screenshot2024-05-17140528](./screenshots/Screenshot2024-05-17140528.png)
 
+#### 4.5 Secrets Configuration
+
+![Screenshot 2024-05-17 155507](./screenshots/Screenshot%202024-05-17%20155507.png)
+
 ### 5. A docs folder to include
 
 #### 5.1 An architecture diagram showing a high-level overview of the infrastructure
