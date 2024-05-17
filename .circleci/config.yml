@@ -14,6 +14,7 @@ jobs:
       # install node and checkout code
       - node/install:
           node-version: "14.15"
+      - eb/setup
       - checkout
       # Use root level package.json to install dependencies in the frontend app
       - run:
@@ -64,7 +65,7 @@ jobs:
     steps:
       - node/install:
           node-version: "14.15"
-      - eb/setup
+      #- eb/setup
       - aws-cli/setup
       - checkout
       - run:
