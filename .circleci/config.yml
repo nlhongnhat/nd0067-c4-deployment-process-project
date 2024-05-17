@@ -15,14 +15,18 @@ jobs:
       - node/install:
           node-version: "14.15"
       - checkout
-      # Install AWS CLI & Elastic Beanstalk CLI
+      # Install AWS CLI
       - aws-cli/setup
-      - eb/setup
+      # Install pip
+      - run:
+          name: Install pip
+          command: |
+            apt-get update && apt-get install -y python3-pip
       # Install Elastic Beanstalk CLI
-      # - run:
-      #     name: Install Elastic Beanstalk CLI
-      #     command: |
-      #       pip install awsebcli
+      - run:
+          name: Install Elastic Beanstalk CLI
+          command: |
+            pip3 install awsebcli
       # Use root level package.json to install dependencies in the frontend app
       - run:
           name: Install Front-End Dependencies
