@@ -13,8 +13,11 @@
     "dev": "npx ts-node-dev --respawn --transpile-only ./src/server.ts",
     "prod": "npx tsc && node ./www/server.js",
     "clean": "rm -rf www/ || true",
-    "deploy": "npm run build && eb list && eb use udagram-api-dev && eb deploy",
-    "build": "npm install . && npm run clean && tsc && cp -rf src/config www/config && eb init && cp -R .elasticbeanstalk www/.elasticbeanstalk && cp .npmrc www/.npmrc && cp package.json www/package.json && cd www && zip -r Archive.zip . && cd ..",
+    "deploy": "npm run build && eb list && eb use udagram-api-dev && eb deploy",  
+    "build": "npm install . && npm run clean && npm run prebuild && npm run compile && npm run postbuild",
+    "prebuild": "eb init -p node.js --region us-east-1 --platform node.js && eb use udagram-api-dev", 
+    "compile": "tsc && cp -rf src/config www/config",
+    "postbuild": "cp -R .elasticbeanstalk www/.elasticbeanstalk || echo '.elasticbeanstalk folder not found, skipping' && cp .npmrc www/.npmrc && cp package.json www/package.json && cd www && zip -r Archive.zip . && cd ..",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
