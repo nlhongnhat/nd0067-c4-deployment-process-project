@@ -17,6 +17,13 @@ jobs:
       - checkout
       # Install AWS CLI
       - aws-cli/setup
+      # Configure AWS CLI with environment variables
+      - run:
+          name: Configure AWS CLI
+          command: |
+            aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+            aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+            aws configure set default.region us-east-1
       # Install pip
       - run:
           name: Install pip
